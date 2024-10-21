@@ -14,9 +14,6 @@ app.listen(PORT, () => {
     console.log("Listening on Port 3000");
 });
 
-
-
-
 // Basic route
 app.get('/', function (req, res) {
     res.send("Welcome to My Hotel.. How can I help you?");
