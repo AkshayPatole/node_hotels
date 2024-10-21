@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-require('dotenv').config();   //here initialize a config file so we use dotenv to mangage configration.
+require('dotenv').config(); //here initialize a config file so we use dotenv to mangage configration.
 
 // Define a MongoDB connection URL
 //const mongoURL = process.env.MONGODB_URL_LOCAL; 

@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const db = require("./db"); // Import the database connection
 
-require('dotenv').config();   //here initialize a config file so we use dotenv to mangage configration.
+require('dotenv').config();  //here initialize a config file so we use dotenv to mangage configration.
 
 //follwing 2 lines is important
 const bodyparser = require('body-parser');
