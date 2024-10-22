@@ -58,6 +58,47 @@ router.get('/:tasteType', async (req, res) => {
 
 })
 
+//update menu data
+router.put("/:id", async (req, res) => {
+    try {
+        const menuId = req.params.id;
+        const updatedMenuData = req.body; //data to update
+
+        const reponse = await MenuItem.findByIdAndUpdate(menuId, updatedMenuData, {
+            new: true, //return to the updated document
+            runValidators: true,
+        });
+        if (!response) {
+            return res.status(400).json({ error: "Menu Not Found" })
+        }
+        console.log("Menu Updated Successfully!");
+        res.status(200).json({ message: "Updated Successfully" })
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: "internal server error" });
+    }
+})
+
+
+//Delete Person data
+router.delete("/:id", async (req, res) => {
+    try {
+        const menuId = req.params.id;
+        const response = await MenuItem.findByIdAndDelete(menuId);
+        if (!response) {
+            return res.status(404).json({ error: "Person Not Found" });
+        } else {
+            console.log("Menu deleted successfully!");
+            res.status(200).json({ message: "Menu deleted successfully!", response });
+        }
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+})
+
 
 
 
