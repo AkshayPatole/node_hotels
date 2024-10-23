@@ -58,27 +58,27 @@ router.get('/:tasteType', async (req, res) => {
 
 })
 
-//update menu data
-router.put("/:id", async (req, res) => {
+// Update person data
+router.put('/:id', async (req, res) => {
     try {
-        const menuId = req.params.id;
+        const menuId = req.params.id; //extract the id from url parameter
         const updatedMenuData = req.body; //data to update
 
-        const reponse = await MenuItem.findByIdAndUpdate(menuId, updatedMenuData, {
-            new: true, //return to the updated document
-            runValidators: true,
+        const response = await MenuItem.findByIdAndUpdate(menuId, updatedMenuData, {
+            new: true, //return the updated document
+            runValidators: true, //run mongoose validation.
         });
-        if (!response) {
-            return res.status(400).json({ error: "Menu Not Found" })
-        }
-        console.log("Menu Updated Successfully!");
-        res.status(200).json({ message: "Updated Successfully" })
 
+        if (!response) {
+            return res.status(404).json({ error: "Menu Not Found" });
+        }
+        console.log("Menu updated successfully!");
+        res.status(200).json({ message: "Menu Updated successfully" });
     } catch (error) {
         console.log(error);
-        res.status(500).json({ error: "internal server error" });
+        res.status(500).json({ error: "Internal Server Error" });
     }
-})
+});
 
 
 //Delete Person data
